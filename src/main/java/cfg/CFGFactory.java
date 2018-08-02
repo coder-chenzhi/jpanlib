@@ -1,6 +1,5 @@
 package cfg;
 
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -345,15 +344,14 @@ public class CFGFactory
 						block.getKey());
 			}
 
-
 			// Hide case/default labels from upstream CFG analysis, they can't
 			// reference internal labels anyway and this prevents bugs with
 			// nested switch statements where the parent switch statement
 			// references the childs labels.
 			switchBlock.setLabels(nonCaseLabels);
 
-			for (CFGEdge edge : switchBody.incomingEdges(switchBody
-					.getExitNode()))
+			for (CFGEdge edge : switchBody
+					.incomingEdges(switchBody.getExitNode()))
 			{
 				switchBlock.addEdge(edge.getSource(),
 						switchBlock.getExitNode());
